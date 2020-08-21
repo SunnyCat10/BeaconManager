@@ -1,0 +1,266 @@
+﻿<Window x:Class="BeaconManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BeaconManager"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1024" Width="1280">
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/gradiant.png"/>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="923*"/>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="212*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="2" Grid.RowSpan="2" Background="#197C7C7C" Grid.ColumnSpan="2" Margin="39,0,0.333,-0.333">
+            <Expander Header="חסימות" Foreground="White" Background="#4C000000" IsExpanded="False" Style="{DynamicResource ExpanderStyle1}">
+                <StackPanel>
+                    <Button x:Name="btn_select_blocked_stations" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="סמן עמדות חסומות"/>
+                    <Button x:Name="btn_create_blocked_email"  Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="יצירת מייל"/>
+                </StackPanel>
+            </Expander>
+            <Expander Header="תקלות" Foreground="DarkGray" Background="#4C000000" IsExpanded="False" Style="{DynamicResource ExpanderStyle1}">
+                <StackPanel>
+                    <Button Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="סמן עמדות תקולות"/>
+                    <Button Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="הוסף תיאור"/>
+                </StackPanel>
+            </Expander>
+            <Expander Header="מ&quot;קט עמדות" Foreground="White" Background="#4C000000" IsExpanded="False" Style="{DynamicResource ExpanderStyle1}">
+                <StackPanel>
+                    <Button x:Name="btn_catalog_view" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="תצוגת מק&quot;טים"/>
+                    <Button x:Name="btn_catalog_update_screen" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="עדכן מק&quot;ט מסך"/>
+                    <Button x:Name="btn_catalog_update_computer" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="עדכן מק&quot;ט מחשב"/>
+                </StackPanel>
+            </Expander>
+            <Expander Header="מתארים" Foreground="White" Background="#4C000000" IsExpanded="False" Style="{DynamicResource ExpanderStyle1}">
+                <StackPanel>
+                    <TextBox x:Name="txtbox_outline" Background="#66000000" Foreground="White" TextAlignment="Right"></TextBox>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_previous" Content="&lt;&lt;" Grid.Column="0" HorizontalAlignment="Stretch" Background="#4C6A6A6A" Foreground="White"/>
+                        <Button x:Name="btn_next" Content="&gt;&gt;" Grid.Column="1" HorizontalAlignment="Stretch" Background="#4C6A6A6A" Foreground="White"/>
+                    </Grid>
+                    <Button x:Name="btn_add_outline" Click="Btn_add_outline_Click" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="הוסף מתאר"/>
+                    <Button x:Name="btn_save_outline" Background="#7F228B22" Content="שמור מתאר" BorderBrush="#FF707070" Foreground="White"/>
+                    <Button x:Name="btn_remove_outline" Background="#4CC32727" Content="מחק מתאר" BorderBrush="#FF707070" Foreground="White"/>
+                </StackPanel>
+            </Expander>
+            <Expander Header="כרטיסי משואה" Foreground="DarkGray" Background="#4C000000" IsExpanded="False" Style="{DynamicResource ExpanderStyle1}">
+                <StackPanel>
+
+                </StackPanel>
+            </Expander>
+            
+            <Expander Header="מידע תקשובי" Foreground="White" Background="#4C000000" IsExpanded="False" Style="{DynamicResource ExpanderStyle1}">
+                <StackPanel>
+                    <Button x:Name="btn_tech_info" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="הצג מידע"/>
+                </StackPanel>
+            </Expander>
+
+            <Expander Header="הגדרות נוספות" Foreground="DarkGray" Background="#4C000000" IsExpanded="False" Style="{DynamicResource ExpanderStyle1}">
+                <StackPanel>
+                    <Button x:Name="btn_settings" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="הגדרות תוכנה"/>
+                    <Button x:Name="btn_info" Background="#7F767676" Foreground="White" BorderBrush="#FF959595" Content="אודות"/>
+                </StackPanel>
+            </Expander>
+        </StackPanel>
+        
+        <Grid Grid.Column="0" Grid.Row="1" Background="#7F000000" Grid.ColumnSpan="3" Margin="0,0,0.333,-0.333">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="1" Grid.RowSpan="4" TextAlignment="Right">
+                <Label x:Name="Debug" Foreground="White"> Information console 1 </Label>
+            </TextBlock>
+            <TextBlock Grid.Column="3" Grid.RowSpan="4" TextAlignment="Right">
+                <Label x:Name="Console_2" Foreground="White"> Infromation console 2 </Label>
+            </TextBlock>
+            <TextBox x:Name="txtbox_computer_id" Grid.Row="2" Background="Transparent" Foreground="White"></TextBox>
+            <TextBox x:Name="txtbox_computer_name" Grid.Row="3" Background="Transparent" Foreground="White"></TextBox>
+            <TextBox x:Name="txtbox_screen_id" Grid.Column="2" Grid.Row="2" Background="Transparent" Foreground="White"></TextBox>
+            <TextBox x:Name="txtbox_screen_name" Grid.Column="2" Grid.Row="3" Background="Transparent" Foreground="White"></TextBox>
+        </Grid>
+
+        <StackPanel Name="PopupContainer" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0.333,0">
+            <Popup x:Name="Popup" Width="Auto" Height="Auto" IsOpen="False" PlacementTarget="{Binding ElementName=PopupContainer}" Placement="Center"
+                   PopupAnimation="Fade" AllowsTransparency="True">
+                <Grid Width="{Binding ActualWidth, ElementName=PopupContainer, Mode=OneWay}"
+                      Height="{Binding ActualHeight, ElementName=PopupContainer, Mode=OneWay}"
+                      Background="#7F000000">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+                    <!--<Bold>
+                        
+                    </Bold>-->
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Right" Foreground="White" FontSize="40"
+                               HorizontalAlignment="Center" Padding="30"><Bold> מדגם לתוכנה לייעול ניהול המשואות</Bold></TextBlock>
+
+                    <TextBlock Grid.Column="0" Grid.Row="1" TextAlignment="Right" Foreground="White" FontSize="30"
+                               HorizontalAlignment="Center"> v.0.0.6 _ Release candidate 1</TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="1" TextAlignment="Right" Foreground="White" FontSize="30"
+                               HorizontalAlignment="Center" Margin="160,0,0,0"> :גרסה</TextBlock>
+
+                    <TextBlock Grid.Column="1" Grid.Row="2" TextAlignment="Right" Foreground="White" FontSize="30"
+                               HorizontalAlignment="Center" Margin="160,0,0,0"> :יוצר</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="2" TextAlignment="Right" Foreground="White" FontSize="30"
+                               HorizontalAlignment="Center"> דניאל דובגון</TextBlock>
+
+                    <TextBlock Grid.Column="1" Grid.Row="3" TextAlignment="Right" Foreground="White" FontSize="30"
+                               HorizontalAlignment="Center" Margin="160,0,0,0"> :שנת יצור</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="3" TextAlignment="Right" Foreground="White" FontSize="30"
+                               HorizontalAlignment="Center"> 2020</TextBlock>
+
+                    <TextBlock Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" TextAlignment="Right" Foreground="White" FontSize="20"
+                               HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="Wrap" Padding="30" >  מדגם טכנולוגי להדגמת חלק מהתחומים אשר ניתן ליעל, בעיקר בתחום התקשוב אך גם בתחומים נוספים. המוצר כעת בשלב ההדגמה ויתכן כי יעבור שינויים נוספים בהמשך תהליך הפיתוח</TextBlock>
+
+                    <TextBlock Grid.Column="0" Grid.Row="5" TextAlignment="Right" Foreground="White" FontSize="20"
+                               HorizontalAlignment="Center"> Daniel Dovgun © 2020</TextBlock>
+                </Grid>
+            </Popup>
+        </StackPanel>
+
+        <StackPanel Name="SettingsPopupContainer" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0.333,0">
+            <Popup x:Name="SettingsPopup" Width="Auto" Height="Auto" IsOpen="False" PlacementTarget="{Binding ElementName=SettingsPopupContainer}" Placement="Center"
+                   PopupAnimation="Fade" AllowsTransparency="True">
+                <Grid Width="{Binding ActualWidth, ElementName=SettingsPopupContainer, Mode=OneWay}"
+                      Height="{Binding ActualHeight, ElementName=SettingsPopupContainer, Mode=OneWay}"
+                      Background="#7F000000">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name ="btn_settings_popup_close" Grid.Column="1" Background="#D8412424" Foreground="White" FontSize="24"
+                            Margin="470,0,0,0">
+                        <Bold>X</Bold>
+                    </Button>
+                    <TextBlock Background="#A5000000" Foreground="White" TextAlignment="Center" Padding="3" FontSize="30"
+                               Grid.ColumnSpan="2" Margin="0,0,60,0">
+                        <Bold>הגדרות</Bold>
+                    </TextBlock>
+                </Grid>
+            </Popup>
+        </StackPanel>
+
+        <StackPanel Name="DebugContainer" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+            <Popup x:Name="DebugPopup" Width="300" Height="450" IsOpen="False" PlacementTarget="{Binding ElementName=DebugContainer}" Placement="Center">
+                <Grid Background="#FF353434">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.8*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Button x:Name ="btn_debug_popup_close" Grid.Column="1" Background="DarkGray" Foreground="#FF353434" FontSize="24">
+                        <Bold>X</Bold>
+                    </Button>
+                    <TextBlock Background="Gray" TextAlignment="Center" Padding="3" FontSize="24">
+                        <Bold>אשף המשואות</Bold>
+                    </TextBlock>
+                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Foreground="LightGray" TextAlignment="Center" Padding="20" FontSize="14"> 
+                        <Bold>:שם משתמש</Bold>
+                    </TextBlock>
+                    <TextBox x:Name="txtbox_debug_username" Grid.Row="2" Grid.ColumnSpan="2" Foreground="White" Background="Black" TextAlignment="Center" Margin="20,15,20,0">
+                    </TextBox>
+                    <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Foreground="LightGray" TextAlignment="Center" Padding="20" FontSize="14"> 
+                        <Bold>:סיסמה</Bold>
+                    </TextBlock>
+                    <PasswordBox x:Name="txtbox_debug_password" Grid.Row="4" Grid.ColumnSpan="2" Foreground="White" Background="Black" HorizontalContentAlignment="Center" Margin="20,15,20,0">
+                    </PasswordBox>
+                    <Button x:Name="btn_debug_popup_login" Grid.Row="5" Grid.ColumnSpan="2" Margin="20,120,20,30"
+                            Background="DarkGray" Foreground="#FF353434" FontSize="24">
+                        <Bold>התחבר</Bold>
+                    </Button>
+                </Grid>
+            </Popup>
+        </StackPanel>
+                    
+
+
+
+
+        <Button x:Name="btn_1" Content="1" HorizontalAlignment="Left" Height="45" Margin="902,144,0,0" VerticalAlignment="Top" Width="49" Background="#FFDDDDDD" Grid.ColumnSpan="2"/>
+        <Button x:Name="btn_2" Content="1א" HorizontalAlignment="Left" Height="45" Margin="902,85,0,0" VerticalAlignment="Top" Width="49" Background="#FFDDDDDD" Grid.ColumnSpan="2"/>
+        <Button x:Name="btn_3" Content="2" HorizontalAlignment="Left" Height="45" Margin="810,144,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_4" Content="2א" HorizontalAlignment="Left" Height="45" Margin="810,85,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_5" Content="3" HorizontalAlignment="Left" Height="45" Margin="719,144,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_6" Content="3א" HorizontalAlignment="Left" Height="45" Margin="719,85,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_7" Content="4" HorizontalAlignment="Left" Height="45" Margin="627,144,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_8" Content="4א" HorizontalAlignment="Left" Height="45" Margin="627,85,0,0" VerticalAlignment="Top" Width="49" Background="#FFDDDDDD"/>
+        <Button x:Name="btn_9" Content="5" HorizontalAlignment="Left" Height="45" Margin="534,144,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_10" Content="5א" HorizontalAlignment="Left" Height="45" Margin="534,85,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_11" Content="6" HorizontalAlignment="Left" Height="45" Margin="434,144,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_12" Content="6א" HorizontalAlignment="Left" Height="45" Margin="434,85,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_13" Content="7" HorizontalAlignment="Left" Height="45" Margin="332,144,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_14" Content="7א" HorizontalAlignment="Left" Height="45" Margin="332,85,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_15" Content="8" HorizontalAlignment="Left" Height="45" Margin="117,144,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_16" Content="9" HorizontalAlignment="Left" Height="44" Margin="332,354,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_17" Content="10" HorizontalAlignment="Left" Height="46" Margin="332,412,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_18" Content="11" HorizontalAlignment="Left" Height="46" Margin="616,326,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_19" Content="12" HorizontalAlignment="Left" Height="46" Margin="567,326,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_20" Content="13" HorizontalAlignment="Left" Height="46" Margin="518,326,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_21" Content="14" HorizontalAlignment="Left" Height="46" Margin="439,326,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_22" Content="15" HorizontalAlignment="Left" Height="44" Margin="461,372,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_23" Content="16" HorizontalAlignment="Left" Height="46" Margin="461,416,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_24" Content="17" HorizontalAlignment="Left" Height="44" Margin="439,462,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_25" Content="18" HorizontalAlignment="Left" Height="44" Margin="535,462,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_26" Content="19" HorizontalAlignment="Left" Height="46" Margin="567,416,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_27" Content="20" HorizontalAlignment="Left" Height="44" Margin="601,462,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_28" Content="21" HorizontalAlignment="Left" Height="44" Margin="703,462,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_29" Content="22" HorizontalAlignment="Left" Height="46" Margin="667,416,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_30" Content="23" HorizontalAlignment="Left" Height="44" Margin="703,372,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_31" Content="24" HorizontalAlignment="Left" Height="46" Margin="794,344,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_32" Content="25" HorizontalAlignment="Left" Height="46" Margin="843,326,0,0" VerticalAlignment="Top" Width="49"/>
+        <Button x:Name="btn_33" Content="26" HorizontalAlignment="Left" Height="46" Margin="909,326,0,0" VerticalAlignment="Top" Width="49" Grid.ColumnSpan="2"/>
+        <Button x:Name="btn_34" Content="27" HorizontalAlignment="Left" Height="46" Margin="909,372,0,0" VerticalAlignment="Top" Width="49" Grid.ColumnSpan="2"/>
+        <Button x:Name="btn_35" Content="28" HorizontalAlignment="Left" Height="46" Margin="909,416,0,0" VerticalAlignment="Top" Width="49" Grid.ColumnSpan="2"/>
+        <Button x:Name="btn_36" Content="29" HorizontalAlignment="Left" Height="46" Margin="909,462,0,0" VerticalAlignment="Top" Width="49" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
